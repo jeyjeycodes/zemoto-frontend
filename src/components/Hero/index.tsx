@@ -1,11 +1,9 @@
-import { Box, Container, TextField, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import Button from '@mui/material/Button';
+import { Box, Container, Typography, useTheme } from '@mui/material';
 import Image from 'next/image';
+import GetQuoteSearchField from '@components/GetQuoteSearchField';
 
 const Hero = () => {
-  const router = useRouter();
-
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -21,49 +19,13 @@ const Hero = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus
             commodo et. Integer cursus ipsum finibus mauris aliquet.
           </Typography>
-          <TextField
-            variant='standard'
-            hiddenLabel
-            autoCapitalize={'uppercase'}
-            placeholder={'Enter Registration'}
-            sx={{
-              borderRadius: 50,
-              backgroundColor: 'white',
-              paddingLeft: '20px',
-              paddingRight: '10px',
-              height: '56px',
-              width: '400px',
-              justifyContent: 'center',
-              textTransform: 'uppercase',
-              marginTop: '20px'
-            }}
-            InputProps={{
-              style: {
-                textTransform: 'uppercase'
-              },
-              autoCapitalize: 'uppercase',
-              disableUnderline: true,
-              endAdornment: (
-                <Button
-                  fullWidth={true}
-                  sx={{ fontWeight: 600, maxWidth: 120 }}
-                  onClick={() => router.push('get-quote')}
-                >
-                  Get quote
-                </Button>
-              )
-            }}
-          />
+          <GetQuoteSearchField buttonBackgroundColor={theme.palette.primary.main} />
         </Box>
       </Container>
 
-      <Image
-        style={{ position: 'absolute', top: 100, right: 0 }}
-        alt={'motorcycle'}
-        src={'/resources/images/motorcycle.png'}
-        width={450}
-        height={450}
-      />
+      <Box sx={{ position: 'absolute', top: 100, right: 0 }}>
+        <Image alt={'motorcycle'} src={'/resources/images/motorcycle.png'} width={450} height={450} />
+      </Box>
     </Box>
   );
 };

@@ -5,6 +5,7 @@ import { Main } from '@components/Layout/Main';
 import HowItWorks from '@components/HowItWorks';
 import Reviews from '@components/Reviews';
 import FrequentlyAskedQuestions from '@components/FrequentlyAskedQuestions';
+import BottomInfo from '@components/BottomInfo';
 
 const Home: NextPage = () => {
   return (
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
         <HowItWorks />
         <Reviews />
         <FrequentlyAskedQuestions />
+        <BottomInfo />
       </Main>
     </div>
   );

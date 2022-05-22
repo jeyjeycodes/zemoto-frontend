@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Box } from '@mui/material';
 import CustomAppBar from '@components/CustomAppBar';
+import Footer from '@components/Footer';
 
 export const Main: FC = ({ children }) => {
   return (
@@ -17,7 +18,9 @@ export const Main: FC = ({ children }) => {
       <Box role='main' flexGrow={1}>
         {children}
       </Box>
-      <Box role='contentinfo'>Footer</Box>
+      <Box role='contentinfo'>
+        <Footer />
+      </Box>
     </Box>
   );
 };

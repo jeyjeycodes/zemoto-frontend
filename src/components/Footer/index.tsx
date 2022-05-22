@@ -4,17 +4,13 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import { useRouter } from 'next/router';
 
-const CustomAppBar = () => {
-  const router = useRouter();
-
+const Footer = () => {
   return (
     <AppBar
       position='static'
-      color={'secondary'}
-      sx={{ display: 'flex', justifyContent: 'center', height: 80, borderBottom: '1px solid rgba(255,255,255,0.3)' }}
+      color={'primary'}
+      sx={{ display: 'flex', justifyContent: 'center', borderTop: '1px solid rgba(255,255,255,0.3)' }}
     >
       <Container maxWidth='lg'>
         <Toolbar disableGutters>
@@ -26,17 +22,13 @@ const CustomAppBar = () => {
             ZEMOTO
           </Typography>
           <Box>
-            <Button
-              color={'secondary'}
-              sx={{ my: 2, display: 'block', border: '2px solid white' }}
-              onClick={() => router.push('get-quote')}
-            >
-              Get Quote
-            </Button>
+            <Typography fontSize={'16px'} fontWeight={700} color={'white'} sx={{ my: 2, display: 'block' }}>
+              Jeylanis Ltd Copyright 2022
+            </Typography>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
-export default CustomAppBar;
+export default Footer;
