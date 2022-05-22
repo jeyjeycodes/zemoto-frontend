@@ -1,12 +1,12 @@
 import { TextField } from '@mui/material';
 import GetQuoteButton from '@components/GetQuoteButton';
-import React from 'react';
+import { FC } from 'react';
 
 interface Props {
   buttonBackgroundColor: string;
 }
 
-const GetQuoteSearchField: React.FC<Props> = ({ buttonBackgroundColor }) => {
+const GetQuoteSearchField: FC<Props> = ({ buttonBackgroundColor }) => {
   return (
     <TextField
       variant='standard'

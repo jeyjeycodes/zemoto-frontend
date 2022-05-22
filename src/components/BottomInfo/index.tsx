@@ -4,8 +4,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material';
 import GetQuoteSearchField from '@components/GetQuoteSearchField';
+import { FC } from 'react';
 
-const BottomInfo = () => {
+const BottomInfo: FC = () => {
   const theme = useTheme();
 
   return (

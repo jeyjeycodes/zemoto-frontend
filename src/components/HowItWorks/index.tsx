@@ -2,6 +2,7 @@ import { Avatar, Box, Container, Typography, useTheme } from '@mui/material';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import ArticleIcon from '@mui/icons-material/Article';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import { FC } from 'react';
 
 interface StepCard {
   stepNo: number;
@@ -31,7 +32,7 @@ const stepCards: StepCard[] = [
   }
 ];
 
-const HowItWorks = () => {
+const HowItWorks: FC = () => {
   const theme = useTheme();
 
   return (

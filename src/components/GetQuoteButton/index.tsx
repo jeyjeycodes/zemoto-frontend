@@ -1,12 +1,12 @@
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { FC } from 'react';
 
 interface Props {
   buttonBackgroundColor: string;
 }
 
-const GetQuoteButton: React.FC<Props> = ({ buttonBackgroundColor }) => {
+const GetQuoteButton: FC<Props> = ({ buttonBackgroundColor }) => {
   const router = useRouter();
 
   return (

@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
+import { FC } from 'react';
 
 interface ReviewCard {
   id: number;
@@ -57,7 +58,7 @@ const reviewCards: ReviewCard[] = [
   }
 ];
 
-const Reviews = () => {
+const Reviews: FC = () => {
   const theme = useTheme();
 
   return (

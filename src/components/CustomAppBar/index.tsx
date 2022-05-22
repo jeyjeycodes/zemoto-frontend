@@ -6,8 +6,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
+import { FC } from 'react';
 
-const CustomAppBar = () => {
+const CustomAppBar: FC = () => {
   const router = useRouter();
 
   return (

@@ -1,6 +1,7 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box, Container, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { nanoid } from 'nanoid';
+import { FC } from 'react';
 
 interface FAQDropdown {
   id: number;
@@ -35,7 +36,7 @@ const faqDropdowns: FAQDropdown[] = [
   }
 ];
 
-const FrequentlyAskedQuestions = () => {
+const FrequentlyAskedQuestions: FC = () => {
   return (
     <Box bgcolor={'#FAFAFA'} paddingY={15}>
       <Container sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>

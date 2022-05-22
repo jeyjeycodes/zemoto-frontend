@@ -1,8 +1,9 @@
 import { Box, Container, Typography, useTheme } from '@mui/material';
 import Image from 'next/image';
 import GetQuoteSearchField from '@components/GetQuoteSearchField';
+import { FC } from 'react';
 
-const Hero = () => {
+const Hero: FC = () => {
   const theme = useTheme();
   return (
     <Box
