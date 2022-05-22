@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Box } from '@mui/material';
-import CustomAppBar from '@components/AppBar/CustomAppBar';
+import CustomAppBar from '@components/CustomAppBar';
 
 export const Main: FC = ({ children }) => {
   return (
@@ -11,13 +11,13 @@ export const Main: FC = ({ children }) => {
         minHeight: '100vh'
       }}
     >
-      <Box role="navigation">
+      <Box role='navigation'>
         <CustomAppBar />
       </Box>
-      <Box role="main" flexGrow={1}>
+      <Box role='main' flexGrow={1}>
         {children}
       </Box>
-      <Box role="contentinfo">Footer</Box>
+      <Box role='contentinfo'>Footer</Box>
     </Box>
   );
 };

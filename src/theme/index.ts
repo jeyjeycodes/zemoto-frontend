@@ -1,12 +1,17 @@
 import { createTheme, responsiveFontSizes, ThemeOptions } from '@mui/material/styles';
-import { cyan } from '@mui/material/colors';
 
 const baseThemeOptions: ThemeOptions = {
   shape: {
     borderRadius: 8
   },
   typography: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Montserrat',
+    h1: { fontWeight: 700 },
+    h2: { fontWeight: 700 },
+    h3: { fontWeight: 700 },
+    h4: { fontWeight: 700 },
+    h5: { fontWeight: 700 },
+    h6: { fontWeight: 600 },
     button: {
       textTransform: 'none'
     }
@@ -20,25 +25,28 @@ const baseThemeOptions: ThemeOptions = {
       },
       styleOverrides: {
         root: {
-          fontSize: '1rem'
+          fontSize: '1rem',
+          color: 'white',
+          borderRadius: 50
         }
       }
     },
     MuiAppBar: {
+      defaultProps: {
+        elevation: 0
+      },
       styleOverrides: {
-        colorPrimary: {
-          backgroundColor: cyan[900]
-        }
+        colorPrimary: {}
       }
     }
   },
   palette: {
     mode: 'light',
     primary: {
-      main: cyan[500]
+      main: '#5BC0BE'
     },
     secondary: {
-      main: '#171A21'
+      main: '#FF7E5F'
     }
   }
 };
