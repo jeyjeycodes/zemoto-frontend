@@ -1,18 +1,21 @@
 import { TextField } from '@mui/material';
 import GetQuoteButton from '@components/GetQuoteButton';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 interface Props {
   buttonBackgroundColor: string;
 }
 
 const GetQuoteSearchField: FC<Props> = ({ buttonBackgroundColor }) => {
+  const [regNumber, setRegNumber] = useState<string>('');
   return (
     <TextField
       variant='standard'
       hiddenLabel
       autoCapitalize={'uppercase'}
       placeholder={'Enter Registration'}
+      value={regNumber}
+      onChange={(event) => setRegNumber(event.target.value)}
       sx={{
         borderRadius: 50,
         backgroundColor: 'white',
@@ -30,7 +33,7 @@ const GetQuoteSearchField: FC<Props> = ({ buttonBackgroundColor }) => {
         },
         autoCapitalize: 'uppercase',
         disableUnderline: true,
-        endAdornment: <GetQuoteButton buttonBackgroundColor={buttonBackgroundColor} />
+        endAdornment: <GetQuoteButton buttonBackgroundColor={buttonBackgroundColor} regNumber={regNumber} />
       }}
     />
   );

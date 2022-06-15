@@ -29,7 +29,7 @@ const CustomAppBar: FC = () => {
           <Box>
             <Button
               color={'secondary'}
-              sx={{ my: 2, display: 'block', border: '2px solid white' }}
+              sx={{ my: 2, display: 'block', border: '2px solid white', fontWeight: 600 }}
               onClick={() => router.push('get-quote')}
             >
               Get Quote

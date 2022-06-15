@@ -4,16 +4,19 @@ import { FC } from 'react';
 
 interface Props {
   buttonBackgroundColor: string;
+  regNumber: string;
 }
 
-const GetQuoteButton: FC<Props> = ({ buttonBackgroundColor }) => {
+const GetQuoteButton: FC<Props> = ({ buttonBackgroundColor, regNumber }) => {
   const router = useRouter();
+
+  console.log('button test: ', regNumber);
 
   return (
     <Button
       fullWidth={true}
       sx={{ fontWeight: 600, maxWidth: 120, background: buttonBackgroundColor }}
-      onClick={() => router.push('get-quote')}
+      onClick={() => router.push({ pathname: 'get-quote', query: { regNumber } })}
     >
       Get quote
     </Button>
