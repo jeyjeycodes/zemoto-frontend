@@ -12,7 +12,6 @@ const GetQuoteSearchField: FC<Props> = ({ buttonBackgroundColor }) => {
     <TextField
       variant='standard'
       hiddenLabel
-      autoCapitalize={'uppercase'}
       placeholder={'Enter Registration'}
       value={regNumber}
       onChange={(event) => setRegNumber(event.target.value)}
@@ -24,14 +23,10 @@ const GetQuoteSearchField: FC<Props> = ({ buttonBackgroundColor }) => {
         height: '56px',
         width: '400px',
         justifyContent: 'center',
-        textTransform: 'uppercase',
         marginTop: '20px'
       }}
+      inputProps={{ style: { textTransform: 'uppercase' }, sx: { '&::placeholder': { textTransform: 'none' } } }}
       InputProps={{
-        style: {
-          textTransform: 'uppercase'
-        },
-        autoCapitalize: 'uppercase',
         disableUnderline: true,
         endAdornment: <GetQuoteButton buttonBackgroundColor={buttonBackgroundColor} regNumber={regNumber} />
       }}

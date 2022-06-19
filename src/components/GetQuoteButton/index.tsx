@@ -10,8 +10,6 @@ interface Props {
 const GetQuoteButton: FC<Props> = ({ buttonBackgroundColor, regNumber }) => {
   const router = useRouter();
 
-  console.log('button test: ', regNumber);
-
   return (
     <Button
       fullWidth={true}
