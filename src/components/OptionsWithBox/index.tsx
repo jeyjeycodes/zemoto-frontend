@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import {
   Box,
   FormControl,
@@ -10,6 +10,7 @@ import {
   RadioGroup,
   TextField
 } from '@mui/material';
+import { Controller, useFormContext } from 'react-hook-form';
 
 export enum BoxType {
   Amount,
@@ -17,63 +18,55 @@ export enum BoxType {
 }
 
 interface Props {
-  onChangeValue: (value: string, boxValue: string | undefined) => void;
+  onChange: (event: any, value: string) => void;
+  value: string;
   boxType: BoxType;
 }
 
-const OptionsWithBox: FC<Props> = ({ onChangeValue, boxType }) => {
-  const [value, setValue] = useState<string | undefined>(undefined);
-  const [outstandingAmount, setOutstandingAmount] = useState<number>(0);
-  const [multilineValue, setMultilineValue] = useState<string>('');
-  const handleChange = (event: any, value: string) => {
-    console.log(event, value);
-    setValue(value);
-    onChangeValue(value, undefined);
-  };
+const OptionsWithBox: FC<Props> = ({ onChange, value, boxType }) => {
+  const { control } = useFormContext();
 
-  const handleAmountChange = (event: any) => {
-    setOutstandingAmount(event.target.value);
-    console.log(event);
-  };
-
-  const handleMultilineValue = (event: any) => {
-    setMultilineValue(event.target.value);
-    console.log(event);
-  };
   return (
     <Box mb={5}>
-      <RadioGroup
-        aria-labelledby='demo-controlled-radio-buttons-group'
-        name='controlled-radio-buttons-group'
-        value={value}
-        onChange={handleChange}
-      >
+      <RadioGroup value={value} onChange={onChange}>
         <FormControlLabel value='no' control={<Radio />} label='No' />
         <FormControlLabel value='yes' control={<Radio />} label='Yes' />
       </RadioGroup>
       {boxType === BoxType.Amount && value === 'yes' && (
-        <FormControl sx={{ mt: 1 }}>
-          <InputLabel htmlFor='outlined-adornment-amount'>Outstanding Amount</InputLabel>
-          <OutlinedInput
-            inputMode={'numeric'}
-            id='outlined-adornment-amount'
-            value={outstandingAmount}
-            onChange={handleAmountChange}
-            startAdornment={<InputAdornment position='start'>£</InputAdornment>}
-            label='Outstanding Amount'
-          />
-        </FormControl>
+        <Controller
+          control={control}
+          name={'outstandingFinanceAmount'}
+          render={({ field: { onChange, value } }) => (
+            <FormControl sx={{ mt: 1 }}>
+              <InputLabel htmlFor='outlined-adornment-amount'>Outstanding Amount</InputLabel>
+              <OutlinedInput
+                inputMode={'numeric'}
+                id='outlined-adornment-amount'
+                value={value}
+                onChange={onChange}
+                startAdornment={<InputAdornment position='start'>£</InputAdornment>}
+                label='Outstanding Amount'
+              />
+            </FormControl>
+          )}
+        />
       )}
       {boxType === BoxType.Multiline && value === 'yes' && (
-        <TextField
-          id='standard-multiline-static'
-          label='Issues'
-          multiline
-          rows={4}
-          value={multilineValue}
-          onChange={handleMultilineValue}
-          variant='outlined'
-          fullWidth
+        <Controller
+          control={control}
+          name={'issues'}
+          render={({ field: { onChange, value } }) => (
+            <TextField
+              id='standard-multiline-static'
+              label='Issues'
+              multiline
+              rows={4}
+              value={value}
+              onChange={onChange}
+              variant='outlined'
+              fullWidth
+            />
+          )}
         />
       )}
     </Box>

@@ -16,7 +16,7 @@ const GetQuote: NextPage = () => {
       </Head>
 
       <Main>
-        <GetQuoteForm regNumber={(router.query.regNumber as string) ?? ''} />
+        <GetQuoteForm registrationNumber={(router.query.regNumber as string) ?? ''} />
       </Main>
     </div>
   );

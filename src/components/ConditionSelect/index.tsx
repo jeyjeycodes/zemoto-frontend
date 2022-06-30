@@ -1,8 +1,9 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 interface Props {
-  onChangeValue: (value: string) => void;
+  onChange: (event: any) => void;
+  value: string;
 }
 
 enum Condition {
@@ -41,23 +42,11 @@ const conditions: ConditionItem[] = [
   }
 ];
 
-export const ConditionSelect: FC<Props> = ({ onChangeValue }) => {
-  const [conditionValue, setConditionValue] = useState<Condition | undefined>();
-  const handleChange = (event: any) => {
-    setConditionValue(event.target.value as Condition);
-    onChangeValue(event.target.value);
-  };
-
+export const ConditionSelect: FC<Props> = ({ onChange, value }) => {
   return (
     <FormControl fullWidth>
       <InputLabel id='condition-label'>Condition</InputLabel>
-      <Select
-        labelId='condition-label'
-        id='condition-select'
-        value={conditionValue}
-        label='Condition'
-        onChange={handleChange}
-      >
+      <Select labelId='condition-label' id='condition-select' value={value} label='Condition' onChange={onChange}>
         {conditions.map((item, index) => (
           <MenuItem key={index} value={item.value}>
             {item.label}

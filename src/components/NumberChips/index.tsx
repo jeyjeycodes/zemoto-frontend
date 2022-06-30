@@ -1,16 +1,14 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Chip, Stack } from '@mui/material';
 
 interface Props {
-  onChangeValue: (value: string) => void;
+  onChange: (event: { target: { value: string } }) => void;
+  value: string;
 }
 
-const NumberChips: FC<Props> = ({ onChangeValue }) => {
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined);
-
+const NumberChips: FC<Props> = ({ onChange, value }) => {
   const clickedNumber = (chosenValue: string) => {
-    setSelectedValue(chosenValue);
-    onChangeValue(chosenValue);
+    onChange({ target: { value: chosenValue } });
   };
 
   return (
@@ -20,9 +18,9 @@ const NumberChips: FC<Props> = ({ onChangeValue }) => {
           sx={{ px: '10px' }}
           key={i}
           label={item}
-          variant={item === selectedValue ? 'filled' : 'outlined'}
+          variant={item === value ? 'filled' : 'outlined'}
           onClick={() => clickedNumber(item)}
-          color={item === selectedValue ? 'primary' : 'default'}
+          color={item === value ? 'primary' : 'default'}
         />
       ))}
     </Stack>

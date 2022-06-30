@@ -1,23 +1,18 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
 
 interface Props {
-  onChangeValue: (value: string) => void;
+  onChange: (event: any, value: string) => void;
+  value: string;
 }
 
-const YesOrNo: FC<Props> = ({ onChangeValue }) => {
-  const [value, setValue] = useState<string | undefined>(undefined);
-
-  const handleChange = (event: any) => {
-    onChangeValue(event.target.value);
-    setValue(event.target.value);
-  };
+const YesOrNo: FC<Props> = ({ onChange, value }) => {
   return (
     <RadioGroup
       aria-labelledby='demo-controlled-radio-buttons-group'
       name='controlled-radio-buttons-group'
       value={value}
-      onChange={handleChange}
+      onChange={onChange}
     >
       <FormControlLabel value='no' control={<Radio />} label='No' />
       <FormControlLabel value='yes' control={<Radio />} label='Yes' />
