@@ -1,0 +1,23 @@
+import { EmailRecipient, Template } from '@src/libs/mailerSender/models';
+
+const MailerSend = require('mailersend');
+
+export const mailerSenderClient = new MailerSend({
+  api_key:
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzAxZTYwM2UwZDk0YjU3ZjIwMDIyOGZjM2JiYjI1NDBhNDQ4OGM3Mjg4MmQ3YjhkZTAwMmNhNjBjYjgxY2Q0MzQwMGVhOTg2MGY5Yjk1MTkiLCJpYXQiOjE2NTY0NTI0MTYuODQ4NTE5LCJuYmYiOjE2NTY0NTI0MTYuODQ4NTIyLCJleHAiOjQ4MTIxMjYwMTYuODQzNzYxLCJzdWIiOiIzMDgyMSIsInNjb3BlcyI6WyJlbWFpbF9mdWxsIiwiZG9tYWluc19mdWxsIiwiYWN0aXZpdHlfZnVsbCIsImFuYWx5dGljc19mdWxsIiwidG9rZW5zX2Z1bGwiLCJ3ZWJob29rc19mdWxsIiwidGVtcGxhdGVzX2Z1bGwiLCJzdXBwcmVzc2lvbnNfZnVsbCIsInNtc19mdWxsIl19.RgHnh8k6oXTMFY64xdNJwLTeq3EcbTv-4o9ucyX8o1Wh4-RkjXzAy4U_xx1GFJ8H5IVQLsKcwlthGcOK8Oy9fEL-CCTbOtDYAg0XHWVyFxZJYaJ_fnWT1eFJiwo0p9iBo8GTpMFNXVo06d2WAlqlkCE9ki4jF3G3KeN3EAXwD0e3EvRMWcqbUqMBsNasxodNKZT7L1OTuKlfZG4Cj7S38hD501H9LPmN_nFUYX-coaY0DOBRwBlTiVrWa2PBreZrQyZgGBWRwNsUOAy3okxZXBf1edMcqBHVc1QK5XzXeDKt2c2IB-DOrFrFv8X6K0FL9CKOvV83MWTDihPV2Or0MGHc0r5uOVc0BLWLo6k7nLsQU3wwlopL84oRXUgkQboRU9l17Xv-PYrd4E0p3BrEklBnG_jTD6_obDBPATPPJnMKzzgHO1ytn3DBAHHs9Vx0WCd0QjKp2Eb0aGxN8aSxhjq84_UhXaMgZV5Ei5sBhf_hPECu4RAdPrWUswrJU-7ommzUSRgsuQN3yMNolZl_GefE7WnpQREib414lNLdtK5LTjGaXADXyRkyhn0PRnwHNnXMZURn6TJcIKrI8bdcF734xv15R3K0O0Ljlda41aoO-2X9DB19hp-Bl7zxQuvZBER7hzlehWPVtH2P_rubjht64BczSB81lYQVye2Kmmw'
+});
+
+export const CustomerTemplateEmail: Template = {
+  id: 'jpzkmgq703ml059v',
+  subject: 'Request confirmation'
+};
+
+export const QuoteFormTemplateEmail: Template = {
+  id: 'pr9084zvx2xgw63d',
+  subject: 'Customer Request Form'
+};
+
+export const InternalUser: EmailRecipient = {
+  email: 'customerservice@zemoto.co.uk',
+  name: 'Zemoto'
+};

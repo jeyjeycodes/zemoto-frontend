@@ -15,7 +15,7 @@ import FormCompleteDialog from '@components/dialogs/FormCompleteDialog';
 import { useRouter } from 'next/router';
 
 interface Props {
-  registrationNumber: string;
+  registrationNumber?: string;
 }
 
 export type QuotationFormData = {
@@ -36,7 +36,7 @@ export type QuotationFormData = {
 const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
   const router = useRouter();
 
-  const [registrationNumber, setRegistrationNumber] = useState<string>(regNumber);
+  const [registrationNumber, setRegistrationNumber] = useState<string>(regNumber ?? '');
   const [vehicleInfo, setVehicleInfo] = useState<VehicleDetails | undefined>(undefined);
   const [completeDialogOpen, setCompleteDialogOpen] = useState(false);
   const theme = useTheme();
@@ -66,6 +66,7 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
   //TODO: main zemoto go back to home page
   //TODO: clean email code
   //TODO: remove jeylanis ltd and add zemoto
+  //TODO: failed getting vehicle information
 
   const {
     control,
@@ -87,7 +88,6 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
       return;
     }
     await axios.post('/api/send-emails', { quotationFormData, vehicleDetails: vehicleInfo });
-
     setCompleteDialogOpen(true);
   };
 
@@ -140,6 +140,7 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
                 name={'registrationNumber'}
                 render={({ field: { onChange, value } }) => (
                   <TextField
+                    error={!!errors.registrationNumber}
                     placeholder={'Enter Registration'}
                     value={value}
                     onChange={(event) => {
