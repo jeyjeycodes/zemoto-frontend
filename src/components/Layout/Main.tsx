@@ -3,7 +3,11 @@ import { Box } from '@mui/material';
 import CustomAppBar from '@components/CustomAppBar';
 import Footer from '@components/Footer';
 
-export const Main: FC = ({ children }) => {
+interface Props {
+  hideGetQuote?: boolean;
+}
+
+export const Main: FC<Props> = ({ children, hideGetQuote }) => {
   return (
     <Box
       sx={{
@@ -13,7 +17,7 @@ export const Main: FC = ({ children }) => {
       }}
     >
       <Box role='navigation'>
-        <CustomAppBar />
+        <CustomAppBar hideGetQuote={hideGetQuote} />
       </Box>
       <Box role='main' flexGrow={1}>
         {children}

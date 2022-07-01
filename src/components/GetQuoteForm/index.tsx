@@ -11,6 +11,8 @@ import { VehicleDetails } from '@src/models/vehicleDetails';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { quotationSchema } from '@src/utils/validation';
+import FormCompleteDialog from '@components/dialogs/FormCompleteDialog';
+import { useRouter } from 'next/router';
 
 interface Props {
   registrationNumber: string;
@@ -32,8 +34,11 @@ export type QuotationFormData = {
 };
 
 const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
+  const router = useRouter();
+
   const [registrationNumber, setRegistrationNumber] = useState<string>(regNumber);
   const [vehicleInfo, setVehicleInfo] = useState<VehicleDetails | undefined>(undefined);
+  const [completeDialogOpen, setCompleteDialogOpen] = useState(false);
   const theme = useTheme();
   const methods = useForm<QuotationFormData>({
     resolver: yupResolver(quotationSchema),
@@ -41,7 +46,7 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
       hasIssues: '',
       hasOutstandingFinance: '',
       hasMostRecentLogBook: '',
-      registrationNumber: '',
+      registrationNumber,
       requiresRedKey: '',
       noOfKeepers: '',
       condition: '',
@@ -52,6 +57,15 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
       outstandingFinanceAmount: 0
     }
   });
+
+  //TODO: handle form errors
+  //TODO: add info given by zaki
+  //TODO: load vehicle details on loading page
+  //TODO: logo
+  //TODO: SEO
+  //TODO: main zemoto go back to home page
+  //TODO: clean email code
+  //TODO: remove jeylanis ltd and add zemoto
 
   const {
     control,
@@ -70,26 +84,35 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
   const submitForm = async (quotationFormData: QuotationFormData) => {
     if (!vehicleInfo) {
       console.log('no vehicle details');
-
       return;
     }
-    console.log(vehicleInfo);
     await axios.post('/api/send-emails', { quotationFormData, vehicleDetails: vehicleInfo });
-    console.log(quotationFormData);
+
+    setCompleteDialogOpen(true);
   };
 
+  const handleDialogClose = async () => {
+    setCompleteDialogOpen(false);
+    await router.push('/');
+  };
   return (
     <FormProvider {...methods}>
       <Container maxWidth={'md'} sx={{ marginTop: 10 }}>
         <Typography variant={'h2'}>Valuate your Motorcycle</Typography>
         <Typography>To get your guaranteed valuation price, start by telling us your registration.</Typography>
-        <ComponentsWithLabel label={'Enter your registration'}>
+        <ComponentsWithLabel label={'Enter your details'}>
           <Box display={'flex'} flex={1}>
             <Controller
               control={control}
               name={'customerName'}
               render={({ field: { onChange, value } }) => (
-                <TextField style={{ flexGrow: 1 }} placeholder={'Full name'} value={value} onChange={onChange} />
+                <TextField
+                  error={!!errors.customerName}
+                  style={{ flexGrow: 1 }}
+                  placeholder={'Full name'}
+                  value={value}
+                  onChange={onChange}
+                />
               )}
             />
 
@@ -97,7 +120,13 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
               control={control}
               name={'customerEmail'}
               render={({ field: { onChange, value } }) => (
-                <TextField style={{ flexGrow: 1 }} placeholder={'Email'} value={value} onChange={onChange} />
+                <TextField
+                  error={!!errors.customerEmail}
+                  style={{ flexGrow: 1 }}
+                  placeholder={'Email'}
+                  value={value}
+                  onChange={onChange}
+                />
               )}
             />
           </Box>
@@ -225,6 +254,7 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
         <Button sx={{ mb: 5 }} variant='contained' fullWidth onClick={handleSubmit(submitForm)}>
           Submit
         </Button>
+        <FormCompleteDialog onClose={handleDialogClose} open={completeDialogOpen} />
       </Container>
     </FormProvider>
   );

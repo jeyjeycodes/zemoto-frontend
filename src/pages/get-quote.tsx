@@ -15,7 +15,7 @@ const GetQuote: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Main>
+      <Main hideGetQuote={true}>
         <GetQuoteForm registrationNumber={(router.query.regNumber as string) ?? ''} />
       </Main>
     </div>

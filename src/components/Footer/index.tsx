@@ -24,7 +24,7 @@ const Footer: FC = () => {
           </Typography>
           <Box>
             <Typography fontSize={'16px'} fontWeight={700} color={'white'} sx={{ my: 2, display: 'block' }}>
-              Jeylanis Ltd Copyright 2022
+              Zemoto Ltd Copyright 2022
             </Typography>
           </Box>
         </Toolbar>

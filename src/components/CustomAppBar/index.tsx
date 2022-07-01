@@ -8,7 +8,11 @@ import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
-const CustomAppBar: FC = () => {
+interface Props {
+  hideGetQuote?: boolean;
+}
+
+const CustomAppBar: FC<Props> = ({ hideGetQuote }) => {
   const router = useRouter();
 
   return (
@@ -21,20 +25,24 @@ const CustomAppBar: FC = () => {
         <Toolbar disableGutters>
           <Typography
             noWrap
-            component='div'
-            sx={{ flexGrow: 1, mr: 2, color: 'white', fontWeight: 700, fontSize: '24px' }}
+            component='a'
+            href='/'
+            sx={{ flexGrow: 1, mr: 2, color: 'white', fontWeight: 700, fontSize: '24px', textDecoration: 'none' }}
           >
             ZEMOTO
           </Typography>
-          <Box>
-            <Button
-              color={'secondary'}
-              sx={{ my: 2, display: 'block', border: '2px solid white', fontWeight: 600 }}
-              onClick={() => router.push('get-quote')}
-            >
-              Get Quote
-            </Button>
-          </Box>
+
+          {!hideGetQuote && (
+            <Box>
+              <Button
+                color={'secondary'}
+                sx={{ my: 2, display: 'block', border: '2px solid white', fontWeight: 600 }}
+                onClick={() => router.push('get-quote')}
+              >
+                Get Quote
+              </Button>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
