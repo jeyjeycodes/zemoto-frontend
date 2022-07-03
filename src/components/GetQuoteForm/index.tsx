@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Avatar, Box, Button, Container, TextField, Typography, useTheme } from '@mui/material';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ErrorIcon from '@mui/icons-material/Error';
@@ -62,8 +62,6 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
     }
   });
 
-  //TODO: add info given by zaki
-  //TODO: load vehicle details on loading page
   //TODO: logo
   //TODO: SEO
 
@@ -101,6 +99,11 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
     setCompleteDialogOpen(false);
     await router.push('/');
   };
+
+  useEffect(() => {
+    if (!vehicleInfo && !!registrationNumber) getRegistrationDetails();
+  }, []);
+
   return (
     <FormProvider {...methods}>
       <Container maxWidth={'md'} sx={{ marginTop: 10 }}>
