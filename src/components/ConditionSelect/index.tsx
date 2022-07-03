@@ -8,11 +8,11 @@ interface Props {
 }
 
 enum Condition {
-  Showroom,
-  Good,
-  Average,
-  BelowAverage,
-  Poor
+  Showroom = 'Showroom',
+  Good = 'Good',
+  Average = 'Average',
+  BelowAverage = 'Below average',
+  Poor = 'Poor'
 }
 
 interface ConditionItem {
