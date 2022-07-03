@@ -10,13 +10,11 @@ export const mailerSenderClient = new MailerSend({
 });
 
 export const CustomerTemplateEmail: Template = {
-  id: 'jpzkmgq703ml059v',
-  subject: 'Request confirmation'
+  id: 'jpzkmgq703ml059v'
 };
 
 export const QuoteFormTemplateEmail: Template = {
-  id: 'pr9084zvx2xgw63d',
-  subject: 'Customer Request Form'
+  id: 'pr9084zvx2xgw63d'
 };
 
 export const InternalUser: EmailRecipient = {

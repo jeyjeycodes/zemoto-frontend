@@ -147,12 +147,6 @@ export const mapToInternalUserTemplate = (form: QuotationFormData, vehicleDetail
 };
 
 export const mapToEmailParams = (recipients: EmailRecipient[], variables: Variable[], templateType: TemplateType) => {
-  const { subject, id } = templateType === TemplateType.Customer ? CustomerTemplateEmail : QuoteFormTemplateEmail;
-  return new EmailParams()
-    .setFrom(InternalUser.email)
-    .setFromName(InternalUser.name)
-    .setRecipients(recipients)
-    .setSubject(subject)
-    .setTemplateId(id)
-    .setVariables(variables);
+  const { id } = templateType === TemplateType.Customer ? CustomerTemplateEmail : QuoteFormTemplateEmail;
+  return new EmailParams().setRecipients(recipients).setTemplateId(id).setVariables(variables);
 };

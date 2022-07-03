@@ -15,7 +15,6 @@ export interface EmailRecipient {
 
 export interface Template {
   id: string;
-  subject: string;
 }
 
 export enum TemplateType {
