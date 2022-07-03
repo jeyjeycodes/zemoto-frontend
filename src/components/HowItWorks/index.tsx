@@ -1,7 +1,8 @@
 import { Avatar, Box, Container, Typography, useTheme } from '@mui/material';
-import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import ArticleIcon from '@mui/icons-material/Article';
-import HandshakeIcon from '@mui/icons-material/Handshake';
+import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
+import SearchIcon from '@mui/icons-material/Search';
+import CurrencyPoundIcon from '@mui/icons-material/CurrencyPound';
+
 import { FC } from 'react';
 
 interface StepCard {
@@ -14,21 +15,22 @@ interface StepCard {
 const stepCards: StepCard[] = [
   {
     stepNo: 1,
-    icon: <DirectionsBikeIcon sx={{ width: 57, height: 50 }} />,
-    subtitle: 'We inspect your motorcycle',
-    description: 'Our handover specialist will check your car is roadworthy and matches the details you gave.'
+    icon: <TwoWheelerIcon sx={{ width: 57, height: 50 }} />,
+    subtitle: 'We value',
+    description:
+      'Provide your motorcycle details and we will contact you within 24 hours to issue a quote and arrange a collection time.'
   },
   {
     stepNo: 2,
-    icon: <ArticleIcon sx={{ width: 57, height: 50 }} />,
-    subtitle: 'We collect your paperwork',
-    description: 'Our handover specialist will check your car is roadworthy and matches the details you gave.'
+    icon: <SearchIcon sx={{ width: 57, height: 50 }} />,
+    subtitle: 'We inspect',
+    description: 'Our specialist will inspect the motorcycle and ensure that it matches the details provided.'
   },
   {
     stepNo: 3,
-    icon: <HandshakeIcon sx={{ width: 57, height: 50 }} />,
-    subtitle: 'We take it from there',
-    description: 'Our handover specialist will check your car is roadworthy and matches the details you gave.'
+    icon: <CurrencyPoundIcon sx={{ width: 57, height: 50 }} />,
+    subtitle: 'We pay',
+    description: 'We will issue an instant bank transfer.'
   }
 ];
 
@@ -43,7 +45,15 @@ const HowItWorks: FC = () => {
         </Typography>
         <Box display={'flex'} flexDirection={'row'} sx={{ justifyContent: 'space-evenly' }}>
           {stepCards.map((item) => (
-            <Box key={item.stepNo} padding={4} display={'flex'} flexDirection={'column'} sx={{ alignItems: 'center' }}>
+            <Box
+              key={item.stepNo}
+              padding={4}
+              display={'flex'}
+              flexDirection={'column'}
+              sx={{ alignItems: 'center' }}
+              flexGrow={1}
+              flexBasis={0}
+            >
               <Avatar
                 variant={'rounded'}
                 sx={{

@@ -14,11 +14,10 @@ const Hero: FC = () => {
       <Container sx={{ display: 'flex' }}>
         <Box mt={10} sx={{ display: 'flex', flexDirection: 'column', minHeight: 380, maxWidth: 700, flexGrow: 1 }}>
           <Typography color={'white'} fontSize={'64px'} fontWeight={700} lineHeight={1}>
-            The best way to sell your motorcycle.
+            The best way to sell your Motorcycle.
           </Typography>
-          <Typography mt={'20px'} color={'white'}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus
-            commodo et. Integer cursus ipsum finibus mauris aliquet.
+          <Typography mt={'20px'} color={'white'} fontWeight={500} fontSize={20}>
+            Get a free personalised valuation of your Motorcycle from our trusted team within 24 hours, fast and easy.
           </Typography>
           <GetQuoteSearchField buttonBackgroundColor={theme.palette.primary.main} />
         </Box>

@@ -1,8 +1,6 @@
 import { Avatar, Box, Container, Typography, useTheme } from '@mui/material';
 import { nanoid } from 'nanoid';
 import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarHalfIcon from '@mui/icons-material/StarHalf';
 import { FC } from 'react';
 
 interface ReviewCard {
@@ -16,24 +14,23 @@ interface ReviewCard {
 const reviewCards: ReviewCard[] = [
   {
     id: 1,
-    review:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus commodo et. Integer cursus ipsum finibus mauris aliquet.',
-    name: 'James Smith',
+    review: 'Very easy, simple, and efficient. It was great that they were able to work around my busy schedule.',
+    name: 'David',
     date: '6 August 2021',
     stars: [
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
-      <StarBorderIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />
+      <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />
     ]
   },
   {
     id: 2,
     review:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus commodo et. Integer cursus ipsum finibus mauris aliquet.',
-    name: 'James Smith',
-    date: '6 August 2021',
+      'Great service! I was concerned that this process would take too long, but they were able to inspect and collect my motorcycle within 24 hours.',
+    name: 'Millie',
+    date: '10 November 2021',
     stars: [
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
@@ -45,15 +42,15 @@ const reviewCards: ReviewCard[] = [
   {
     id: 3,
     review:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus commodo et. Integer cursus ipsum finibus mauris aliquet.',
-    name: 'James Smith',
-    date: '6 August 2021',
+      'Zaki, who collected my bike, was very friendly. He arrived on time, inspected my motorbike, and paid me exactly what was quoted. I will recommend this service to my friends. This is definitely how I will be selling my bikes from now on.',
+    name: 'Andrei',
+    date: '18 February 2022',
     stars: [
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
       <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />,
-      <StarHalfIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />
+      <StarIcon key={nanoid(5)} sx={{ width: '20px', height: '20px' }} />
     ]
   }
 ];
@@ -78,6 +75,8 @@ const Reviews: FC = () => {
               display={'flex'}
               flexDirection={'column'}
               alignItems={'flex-start'}
+              flexGrow={1}
+              flexBasis={0}
             >
               <Box
                 display={'flex'}
@@ -92,7 +91,7 @@ const Reviews: FC = () => {
                   </Avatar>
                 ))}
               </Box>
-              <Typography mt={2} fontWeight={400} color={'#626262'} fontSize={'16px'}>
+              <Typography mt={2} fontWeight={400} color={'#626262'} fontSize={'16px'} flexGrow={1}>
                 {item.review}
               </Typography>
               <Typography mt={5} fontWeight={600} fontSize={'18px'}>

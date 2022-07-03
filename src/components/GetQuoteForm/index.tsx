@@ -66,8 +66,6 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
   //TODO: load vehicle details on loading page
   //TODO: logo
   //TODO: SEO
-  //TODO: main zemoto go back to home page
-  //TODO: remove jeylanis ltd and add zemoto
 
   const {
     control,

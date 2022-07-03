@@ -1,4 +1,14 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Container, Typography } from '@mui/material';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Container,
+  List,
+  ListItem,
+  ListItemText,
+  Typography
+} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { nanoid } from 'nanoid';
 import { FC } from 'react';
@@ -6,33 +16,49 @@ import { FC } from 'react';
 interface FAQDropdown {
   id: number;
   question: string;
-  answer: string;
+  answers: string[];
 }
 
 const faqDropdowns: FAQDropdown[] = [
   {
     id: 1,
-    question: 'Can I part-exchange my car if it’s still on finance?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus commodo et. Integer cursus ipsum finibus mauris aliquet.'
+    question: 'What do I need to sell my bike?',
+    answers: [
+      'Most recent V5 logbook registration certificate, registered to you or your business.',
+      'All motorcycle keys. If some are missing, please inform us.',
+      'Proof of finance settlement if the bike was purchased on finance.'
+    ]
   },
   {
     id: 2,
-    question: 'Can I part-exchange my car if it’s still on finance?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus commodo et. Integer cursus ipsum finibus mauris aliquet.'
+    question: 'What happens once I’ve accepted your offer?',
+    answers: [
+      'Email (customerservice@zemoto.co.uk) our team, so we can arrange the best time to inspect and collect your bike.'
+    ]
   },
   {
     id: 3,
-    question: 'Can I part-exchange my car if it’s still on finance?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus commodo et. Integer cursus ipsum finibus mauris aliquet.'
+    question: 'How will I receive payment for my motorcycle?',
+    answers: ['We will issue the payment via bank transfer when collecting the bike.']
   },
   {
     id: 4,
-    question: 'Can I part-exchange my car if it’s still on finance?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet ante felis, nec dapibus tellus commodo et. Integer cursus ipsum finibus mauris aliquet.'
+    question: 'What if I don’t have the V5?',
+    answers: [
+      'You can get a V62 form from the post office to receive a new V5 certificate, as we do not accept motorcycles without the V5.'
+    ]
+  },
+  {
+    id: 5,
+    question: 'Is my quotation fixed?',
+    answers: [
+      'You will be paid the price quoted, as long as the specialist confirms that the condition of the motorcycle matches the details provided.'
+    ]
+  },
+  {
+    id: 6,
+    question: 'How much is the collection charge? ',
+    answers: ['It’s completely FREE within 125 miles of London.']
   }
 ];
 
@@ -61,7 +87,13 @@ const FrequentlyAskedQuestions: FC = () => {
               <Typography fontWeight={600}>{item.question}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>{item.answer}</Typography>
+              <List>
+                {item.answers.map((answer, index) => (
+                  <ListItem key={index}>
+                    <ListItemText primary={` - ${answer}`} />
+                  </ListItem>
+                ))}
+              </List>
             </AccordionDetails>
           </Accordion>
         ))}
