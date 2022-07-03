@@ -1,12 +1,15 @@
 import type { AppProps } from 'next/app';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { theme } from '@theme/index';
+import { theme } from '@src/theme';
+import { SnackbarProvider } from 'notistack';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Component {...pageProps} />
+      <SnackbarProvider maxSnack={3}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </SnackbarProvider>
     </ThemeProvider>
   );
 }

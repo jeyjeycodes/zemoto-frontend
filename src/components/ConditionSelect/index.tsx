@@ -4,6 +4,7 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 interface Props {
   onChange: (event: any) => void;
   value: string;
+  hasErrors: boolean;
 }
 
 enum Condition {
@@ -42,11 +43,18 @@ const conditions: ConditionItem[] = [
   }
 ];
 
-export const ConditionSelect: FC<Props> = ({ onChange, value }) => {
+export const ConditionSelect: FC<Props> = ({ onChange, value, hasErrors }) => {
   return (
     <FormControl fullWidth>
       <InputLabel id='condition-label'>Condition</InputLabel>
-      <Select labelId='condition-label' id='condition-select' value={value} label='Condition' onChange={onChange}>
+      <Select
+        labelId='condition-label'
+        id='condition-select'
+        value={value}
+        error={hasErrors}
+        label='Condition'
+        onChange={onChange}
+      >
         {conditions.map((item, index) => (
           <MenuItem key={index} value={item.value}>
             {item.label}

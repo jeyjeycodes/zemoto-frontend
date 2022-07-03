@@ -8,7 +8,8 @@ import {
   OutlinedInput,
   Radio,
   RadioGroup,
-  TextField
+  TextField,
+  Typography
 } from '@mui/material';
 import { Controller, useFormContext } from 'react-hook-form';
 
@@ -21,10 +22,14 @@ interface Props {
   onChange: (event: any, value: string) => void;
   value: string;
   boxType: BoxType;
+  hasErrors: boolean;
 }
 
-const OptionsWithBox: FC<Props> = ({ onChange, value, boxType }) => {
-  const { control } = useFormContext();
+const OptionsWithBox: FC<Props> = ({ onChange, value, boxType, hasErrors }) => {
+  const {
+    control,
+    formState: { errors }
+  } = useFormContext();
 
   return (
     <Box mb={5}>
@@ -32,14 +37,18 @@ const OptionsWithBox: FC<Props> = ({ onChange, value, boxType }) => {
         <FormControlLabel value='no' control={<Radio />} label='No' />
         <FormControlLabel value='yes' control={<Radio />} label='Yes' />
       </RadioGroup>
+      {hasErrors && <Typography color={'error'}>Please select one option</Typography>}
       {boxType === BoxType.Amount && value === 'yes' && (
         <Controller
           control={control}
           name={'outstandingFinanceAmount'}
           render={({ field: { onChange, value } }) => (
             <FormControl sx={{ mt: 1 }}>
-              <InputLabel htmlFor='outlined-adornment-amount'>Outstanding Amount</InputLabel>
+              <InputLabel error={!!errors.outstandingFinanceAmount} htmlFor='outlined-adornment-amount'>
+                Outstanding Amount
+              </InputLabel>
               <OutlinedInput
+                error={!!errors.outstandingFinanceAmount}
                 inputMode={'numeric'}
                 id='outlined-adornment-amount'
                 value={value}
@@ -57,6 +66,7 @@ const OptionsWithBox: FC<Props> = ({ onChange, value, boxType }) => {
           name={'issues'}
           render={({ field: { onChange, value } }) => (
             <TextField
+              error={!!errors.issues}
               id='standard-multiline-static'
               label='Issues'
               multiline

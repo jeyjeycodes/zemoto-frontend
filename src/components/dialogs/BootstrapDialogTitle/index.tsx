@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { DialogTitle, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 interface Props {
   id: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   onClose?: () => void;
 }
 

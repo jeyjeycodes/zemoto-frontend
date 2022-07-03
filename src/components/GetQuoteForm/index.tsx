@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { Avatar, Box, Button, Container, TextField, Typography, useTheme } from '@mui/material';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import ErrorIcon from '@mui/icons-material/Error';
 import NumberChips from '@components/NumberChips';
 import OptionsWithBox, { BoxType } from '@components/OptionsWithBox';
 import YesOrNo from '@components/YesOrNo';
@@ -13,6 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { quotationSchema } from '@src/utils/validation';
 import FormCompleteDialog from '@components/dialogs/FormCompleteDialog';
 import { useRouter } from 'next/router';
+import { useSnackbar } from 'notistack';
 
 interface Props {
   registrationNumber?: string;
@@ -35,9 +37,11 @@ export type QuotationFormData = {
 
 const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
   const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
 
   const [registrationNumber, setRegistrationNumber] = useState<string>(regNumber ?? '');
   const [vehicleInfo, setVehicleInfo] = useState<VehicleDetails | undefined>(undefined);
+  const [failedToGetVehicleInfo, setFailedToGetVehicleInfo] = useState<boolean>(false);
   const [completeDialogOpen, setCompleteDialogOpen] = useState(false);
   const theme = useTheme();
   const methods = useForm<QuotationFormData>({
@@ -58,15 +62,12 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
     }
   });
 
-  //TODO: handle form errors
   //TODO: add info given by zaki
   //TODO: load vehicle details on loading page
   //TODO: logo
   //TODO: SEO
   //TODO: main zemoto go back to home page
-  //TODO: clean email code
   //TODO: remove jeylanis ltd and add zemoto
-  //TODO: failed getting vehicle information
 
   const {
     control,
@@ -74,17 +75,24 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
     formState: { errors }
   } = methods;
 
-  console.log(errors);
-
   const getRegistrationDetails = async () => {
-    const result = await axios.post('/api/get-vehicle-details', { registrationNumber });
-    const vehicleDetails: VehicleDetails = result.data;
-    setVehicleInfo(vehicleDetails);
+    try {
+      setVehicleInfo(undefined);
+      setFailedToGetVehicleInfo(false);
+      const result = await axios.post('/api/get-vehicle-details', { registrationNumber });
+      const vehicleDetails: VehicleDetails = result.data;
+      setVehicleInfo(vehicleDetails);
+    } catch (e) {
+      console.log('There was an error!!');
+      setFailedToGetVehicleInfo(true);
+    }
   };
 
   const submitForm = async (quotationFormData: QuotationFormData) => {
     if (!vehicleInfo) {
-      console.log('no vehicle details');
+      enqueueSnackbar('Missing vehicle details. Please go under vehicle registration and press "Find"', {
+        variant: 'error'
+      });
       return;
     }
     await axios.post('/api/send-emails', { quotationFormData, vehicleDetails: vehicleInfo });
@@ -108,7 +116,7 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
               render={({ field: { onChange, value } }) => (
                 <TextField
                   error={!!errors.customerName}
-                  style={{ flexGrow: 1 }}
+                  style={{ flexGrow: 1, marginRight: 20 }}
                   placeholder={'Full name'}
                   value={value}
                   onChange={onChange}
@@ -122,7 +130,7 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
               render={({ field: { onChange, value } }) => (
                 <TextField
                   error={!!errors.customerEmail}
-                  style={{ flexGrow: 1 }}
+                  style={{ flexGrow: 3 }}
                   placeholder={'Email'}
                   value={value}
                   onChange={onChange}
@@ -160,7 +168,7 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
                 Find
               </Button>
             </Box>
-            {!!vehicleInfo && (
+            {!!vehicleInfo && !failedToGetVehicleInfo && (
               <Box
                 display={'flex'}
                 flexDirection={'row'}
@@ -176,6 +184,26 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
                 <Typography sx={{ paddingX: 5, fontWeight: 600, marginLeft: 2 }}>
                   Make: {vehicleInfo.make}, Color: {vehicleInfo.colour}, Year: {vehicleInfo.yearOfManufacture}, Engine
                   size: {vehicleInfo.engineCapacity}
+                </Typography>
+              </Box>
+            )}
+            {!vehicleInfo && failedToGetVehicleInfo && (
+              <Box
+                display={'flex'}
+                flexDirection={'row'}
+                mt={4}
+                bgcolor={'#FAFAFA'}
+                padding={2}
+                alignItems={'center'}
+                borderRadius={'16px'}
+                border={2}
+                borderColor={'red'}
+              >
+                <Avatar sx={{ backgroundColor: 'transparent', color: 'red' }}>
+                  <ErrorIcon />
+                </Avatar>
+                <Typography sx={{ paddingX: 5, fontWeight: 600, marginLeft: 2 }}>
+                  There was an issues receiving details for: {registrationNumber}
                 </Typography>
               </Box>
             )}
@@ -203,7 +231,9 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
           <Controller
             control={control}
             name={'noOfKeepers'}
-            render={({ field: { onChange, value } }) => <NumberChips onChange={onChange} value={value} />}
+            render={({ field: { onChange, value } }) => (
+              <NumberChips onChange={onChange} value={value} hasErrors={!!errors.noOfKeepers} />
+            )}
           />
         </ComponentsWithLabel>
 
@@ -211,7 +241,9 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
           <Controller
             control={control}
             name={'condition'}
-            render={({ field: { onChange, value } }) => <ConditionSelect onChange={onChange} value={value} />}
+            render={({ field: { onChange, value } }) => (
+              <ConditionSelect onChange={onChange} value={value} hasErrors={!!errors.condition} />
+            )}
           />
         </ComponentsWithLabel>
 
@@ -220,7 +252,12 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
             name={'hasOutstandingFinance'}
             control={control}
             render={({ field: { onChange, value } }) => (
-              <OptionsWithBox boxType={BoxType.Amount} onChange={onChange} value={value} />
+              <OptionsWithBox
+                boxType={BoxType.Amount}
+                onChange={onChange}
+                value={value}
+                hasErrors={!!errors.hasOutstandingFinance}
+              />
             )}
           />
         </ComponentsWithLabel>
@@ -229,14 +266,18 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
           <Controller
             control={control}
             name={'hasMostRecentLogBook'}
-            render={({ field: { onChange, value } }) => <YesOrNo onChange={onChange} value={value} />}
+            render={({ field: { onChange, value } }) => (
+              <YesOrNo onChange={onChange} value={value} hasErrors={!!errors.hasMostRecentLogBook} />
+            )}
           />
         </ComponentsWithLabel>
         <ComponentsWithLabel label={'Does your bike require a red key?'}>
           <Controller
             control={control}
             name={'requiresRedKey'}
-            render={({ field: { onChange, value } }) => <YesOrNo onChange={onChange} value={value} />}
+            render={({ field: { onChange, value } }) => (
+              <YesOrNo onChange={onChange} value={value} hasErrors={!!errors.requiresRedKey} />
+            )}
           />
         </ComponentsWithLabel>
         <ComponentsWithLabel
@@ -248,7 +289,12 @@ const GetQuoteForm: FC<Props> = ({ registrationNumber: regNumber }) => {
             name={'hasIssues'}
             control={control}
             render={({ field: { onChange, value } }) => (
-              <OptionsWithBox boxType={BoxType.Multiline} onChange={onChange} value={value} />
+              <OptionsWithBox
+                boxType={BoxType.Multiline}
+                onChange={onChange}
+                value={value}
+                hasErrors={!!errors.hasIssues}
+              />
             )}
           />
         </ComponentsWithLabel>
