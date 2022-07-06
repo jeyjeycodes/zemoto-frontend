@@ -21,7 +21,7 @@ const GetQuoteSearchField: FC<Props> = ({ buttonBackgroundColor }) => {
         paddingLeft: '20px',
         paddingRight: '10px',
         height: '56px',
-        width: '400px',
+        width: ['320px', '400px'],
         justifyContent: 'center',
         marginTop: '20px'
       }}

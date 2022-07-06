@@ -59,12 +59,12 @@ const Reviews: FC = () => {
   const theme = useTheme();
 
   return (
-    <Box paddingY={15}>
+    <Box paddingY={[5, 5, 15]}>
       <Container sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
         <Typography alignSelf={'center'} mb={5} variant={'h4'}>
           Reviews
         </Typography>
-        <Box display={'flex'} flexDirection={'row'} sx={{ justifyContent: 'space-evenly' }}>
+        <Box display={'flex'} flexDirection={['column', 'column', 'row']} sx={{ justifyContent: 'space-evenly' }}>
           {reviewCards.map((item) => (
             <Box
               key={item.id}

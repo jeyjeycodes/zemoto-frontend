@@ -16,7 +16,7 @@ const NumberChips: FC<Props> = ({ onChange, value, hasErrors }) => {
     <Stack spacing={2} direction={'row'}>
       {['1', '2', '3', '4', '5+'].map((item, i) => (
         <Chip
-          sx={{ px: '20px', borderColor: hasErrors ? 'red' : undefined }}
+          sx={{ px: ['10px', '10px', '20px'], borderColor: hasErrors ? 'red' : undefined }}
           key={i}
           label={item}
           variant={item === value ? 'filled' : 'outlined'}

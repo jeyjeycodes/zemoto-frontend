@@ -64,7 +64,7 @@ const faqDropdowns: FAQDropdown[] = [
 
 const FrequentlyAskedQuestions: FC = () => {
   return (
-    <Box bgcolor={'#FAFAFA'} paddingY={15}>
+    <Box bgcolor={'#FAFAFA'} paddingY={[5, 5, 15]}>
       <Container sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
         <Typography alignSelf={'center'} mb={5} variant={'h4'}>
           Frequently asked questions

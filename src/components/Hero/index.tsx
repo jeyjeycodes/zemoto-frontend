@@ -13,7 +13,7 @@ const Hero: FC = () => {
     >
       <Container sx={{ display: 'flex' }}>
         <Box mt={10} sx={{ display: 'flex', flexDirection: 'column', minHeight: 380, maxWidth: 700, flexGrow: 1 }}>
-          <Typography color={'white'} fontSize={'64px'} fontWeight={700} lineHeight={1}>
+          <Typography color={'white'} variant={'h2'} fontWeight={700} lineHeight={1}>
             The best way to sell your Motorcycle.
           </Typography>
           <Typography mt={'20px'} color={'white'} fontWeight={500} fontSize={20}>
@@ -23,7 +23,7 @@ const Hero: FC = () => {
         </Box>
       </Container>
 
-      <Box sx={{ position: 'absolute', top: 100, right: 0 }}>
+      <Box sx={{ position: 'absolute', top: 100, right: 0, display: { xs: 'none ', xl: 'flex' } }}>
         <Image alt={'motorcycle'} src={'/resources/images/motorcycle.png'} width={450} height={450} />
       </Box>
     </Box>
