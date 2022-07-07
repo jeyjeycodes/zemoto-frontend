@@ -2,11 +2,12 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
+
+import ClickableLogo from '@components/ClickableLogo';
 
 interface Props {
   hideGetQuote?: boolean;
@@ -23,15 +24,7 @@ const CustomAppBar: FC<Props> = ({ hideGetQuote }) => {
     >
       <Container maxWidth='lg'>
         <Toolbar disableGutters>
-          <Typography
-            noWrap
-            component='a'
-            href='/'
-            sx={{ flexGrow: 1, mr: 2, color: 'white', fontWeight: 700, fontSize: '24px', textDecoration: 'none' }}
-          >
-            ZEMOTO
-          </Typography>
-
+          <ClickableLogo sx={{ flexGrow: 1, mr: 2 }} />
           {!hideGetQuote && (
             <Box>
               <Button

@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { FC } from 'react';
+import ClickableLogo from '@components/ClickableLogo';
 
 const Footer: FC = () => {
   return (
@@ -15,13 +16,7 @@ const Footer: FC = () => {
     >
       <Container maxWidth='lg'>
         <Toolbar disableGutters>
-          <Typography
-            noWrap
-            component='div'
-            sx={{ flexGrow: 1, mr: 2, color: 'white', fontWeight: 700, fontSize: '24px' }}
-          >
-            ZEMOTO
-          </Typography>
+          <ClickableLogo sx={{ flexGrow: 1, mr: 2 }} />
           <Box>
             <Typography fontSize={'16px'} fontWeight={700} color={'white'} sx={{ my: 2, display: 'block' }}>
               Zemoto Ltd Copyright 2022
