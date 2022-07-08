@@ -1,9 +1,5 @@
 import type { NextPage } from 'next';
-
-
-
-
-
+import Head from 'next/head';
 import Hero from '@components/Hero';
 import { Main } from '@components/Layout/Main';
 import HowItWorks from '@components/HowItWorks';
