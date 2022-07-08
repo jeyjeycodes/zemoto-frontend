@@ -12,7 +12,7 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Zemoto - test</title>
-        <meta name='description' content='Zemoto, test the best way to sell your bike' />
+        <meta name='description' content='Zemoto,  #1 way to sell your bike' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Main>
