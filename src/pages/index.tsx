@@ -36,6 +36,18 @@ Collection Service'/>
   "logo": "https://zemoto.vercel.app/resources/svgs/zemoto_refactored.svg"
 }
 </script>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-233540932-12"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-233540932-12');
+</script>
+
+  <meta name="google-site-verification" content="6VoxLDYfEQtYivbxxzORqkBNYFQ3euXTzv5l6kvf_Ko" />
       </Head>
       <Main>
         <Hero />
