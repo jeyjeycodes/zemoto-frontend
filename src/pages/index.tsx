@@ -30,8 +30,8 @@ Collection Service'
         <meta name='robots' content='index,follow' />
         <link rel='canonical' href='https://www.zemoto.co.uk/' />
 
-        <meta property='og:title' content='Zemoto Vercel App - Sell your Motorcyle Online, London ' />
-        <meta property='og:site_name' content='zemoto.verce' />
+        <meta property='og:title' content='Zemoto - Sell your Motorcyle Online, London ' />
+        <meta property='og:site_name' content='zemoto.co.uk' />
         <meta property='og:url' content='https://zemoto.vercel.app/resources/svgs/zemoto_refactored.svg' />
         <meta property='og:description' content='' />
         <meta property='og:type' content='website' />
