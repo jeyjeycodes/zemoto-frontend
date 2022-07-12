@@ -11,7 +11,10 @@ const GetQuote: NextPage = () => {
     <div>
       <Head>
         <title> Valuate your Motorcycle - Zemoto Vercel App</title>
-       
+        <meta name='description' content='To get your guaranteed valuation price by our trusted team within 24 hours; Fast and Easy. start by telling us your registration' />
+        <link rel='icon' href='/favicon.ico' />
+        <meta name="robots" content="index,follow">
+<link rel="canonical" href="https://zemoto.vercel.app/get-quote" />
         
       </Head>
 
