@@ -11,8 +11,20 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Zemoto - test 1 2</title>
-        <meta name='description' content='Zemoto,  #1 way to sell your bike 1' />
+        <title> <title>Zemoto Vercel App - Sell your Motorcyle Online, London </title> </title>
+        <meta name='description' content='Our Online App helps you Sell your Motorcycle Instantly in London with a Specialist inspection service, get a quotation, Free Collection within 125 miles' />
+        
+        <meta name="keywords" content="Sell Your Motorcycle
+Motorcycle in London
+Selling Motorcycles Online
+Sell Your Motorcycle Instantly
+Inspection Specialists
+Quotation Service
+Collection Service"/>
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://zemoto.vercel.app/" />
+        
+        
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Main>
