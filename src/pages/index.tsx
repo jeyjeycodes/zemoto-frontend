@@ -21,7 +21,7 @@ Sell Your Motorcycle Instantly
 Inspection Specialists
 Quotation Service
 Collection Service'/>
-<meta name='robots' content='index,follow'>
+<meta name='robots' content='index,follow'/>
 <link rel='canonical' href='https://zemoto.vercel.app/' />
         
         <meta property="og:title" content="Zemoto Vercel App - Sell your Motorcyle Online, London ">
