@@ -26,6 +26,16 @@ Collection Service"/>
         
         
         <link rel='icon' href='/favicon.ico' />
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "zemoto vercel app",
+  "url": "https://zemoto.vercel.app/",
+  "logo": "https://zemoto.vercel.app/resources/svgs/zemoto_refactored.svg"
+}
+</script>
       </Head>
       <Main>
         <Hero />
