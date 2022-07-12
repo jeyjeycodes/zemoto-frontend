@@ -17,7 +17,7 @@ const GetQuote: NextPage = () => {
         />
         <link rel='icon' href='/favicon.ico' />
         <meta name='robots' content='index,follow' />
-        <link rel='canonical' href='https://zemoto.vercel.app/get-quote' />
+        <link rel='canonical' href='https://www.zemoto.co.uk/get-quote' />
       </Head>
 
       <Main hideGetQuote={true}>
