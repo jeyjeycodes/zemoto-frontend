@@ -28,7 +28,7 @@ Quotation Service
 Collection Service'
         />
         <meta name='robots' content='index,follow' />
-        <link rel='canonical' href='https://zemoto.vercel.app/' />
+        <link rel='canonical' href='https://www.zemoto.co.uk/' />
 
         <meta property='og:title' content='Zemoto Vercel App - Sell your Motorcyle Online, London ' />
         <meta property='og:site_name' content='zemoto.verce' />
