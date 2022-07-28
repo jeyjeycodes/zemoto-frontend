@@ -15,7 +15,6 @@ const CookieBanner: FC = () => {
   const [analyticsEnabled, setAnalyticsEnabled] = useState(true);
 
   const handleAddAnalyticsCookies = () => {
-    console.log('GA', gaTrackingId);
     if (process.env.NODE_ENV !== 'production') return;
     import('react-ga')
       .then((x) => x.default)
