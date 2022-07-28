@@ -13,15 +13,15 @@ const Analytics: FC = () => {
             gtag('config', 'UA-233540932-12');
         `}
       </Script>
-      <Script id={'schema-script'} type={'application/ld+json'}>
-        {`
-          '@context': 'https://schema.org',
-          '@type': 'Organization',
-          name: 'zemoto',
-          url: 'https://www.zemoto.co.uk/',
-          logo: '/resources/svgs/zemoto_refactored.svg'
-        `}
-      </Script>
+      {/*<Script id={'schema-script'} type={'application/ld+json'}>*/}
+      {/*  {`*/}
+      {/*    '@context': 'https://schema.org',*/}
+      {/*    '@type': 'Organization',*/}
+      {/*    name: 'zemoto',*/}
+      {/*    url: 'https://www.zemoto.co.uk/',*/}
+      {/*    logo: 'https://www.zemoto.co.uk/resources/svgs/zemoto_refactored.svg'*/}
+      {/*  `}*/}
+      {/*</Script>*/}
     </>
   );
 };

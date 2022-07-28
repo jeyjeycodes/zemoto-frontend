@@ -18,7 +18,6 @@ const Home: NextPage = () => {
           name='description'
           content='Our Online App helps you Sell your Motorcycle Instantly in London with a Specialist inspection service, get a quotation, Free Collection within 125 miles'
         />
-
         <meta
           name='keywords'
           content='Sell Your Motorcycle
@@ -31,18 +30,15 @@ Collection Service'
         />
         <meta name='robots' content='index,follow' />
         <link rel='canonical' href='https://www.zemoto.co.uk/' />
-
         <meta property='og:title' content='Zemoto - Sell your Motorcyle Online, London ' />
         <meta property='og:site_name' content='zemoto.co.uk' />
         <meta property='og:url' content='https://www.zemoto.co.uk' />
         <meta property='og:description' content='' />
         <meta property='og:type' content='website' />
-        <meta property='og:image' content='/resources/svgs/zemoto_refactored.svg' />
+        <meta property='og:image' content='https://www.zemoto.co.uk/resources/svgs/zemoto_refactored.svg' />
         <meta property='og:image' content='' />
-
         <link rel='icon' href='/favicon.ico' />
         {/* TODO: enable analytics script only for production */}
-
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{
@@ -51,11 +47,10 @@ Collection Service'
               '@type': 'Organization',
               name: 'Zemoto',
               url: 'https://www.zemoto.co.uk/',
-              logo: '/resources/svgs/zemoto_refactored.svg'
+              logo: 'https://www.zemoto.co.uk/resources/svgs/zemoto_refactored.svg'
             })
           }}
         />
-
         {/*{!--Global site tag (gtag.js) - Google CookieBanner --}*/}
         {/*<script async src='https://www.googletagmanager.com/gtag/js?id=UA-233540932-12' />*/}
         {/*<script*/}
@@ -67,9 +62,8 @@ Collection Service'
         {/*    gtag('config', 'UA-233540932-12');`*/}
         {/*  }}*/}
         {/*></script>*/}
-
         {/*Google search*/}
-        <meta name='google-site-verification' content='6VoxLDYfEQtYivbxxzORqkBNYFQ3euXTzv5l6kvf_Ko' />
+        <meta name='google-site-verification' content='d4r5fO-Ry26B9ZeIjSK0X6qvM7HIo8CbRb0OUDZlzuo' />
       </Head>
       <Main>
         <Analytics />
