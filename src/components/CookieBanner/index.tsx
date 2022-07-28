@@ -1,4 +1,3 @@
-import { Router } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 import { Button, Divider, Drawer, IconButton, Stack, Switch, Typography } from '@mui/material';
 import Cookies from 'universal-cookie';
@@ -19,23 +18,23 @@ const CookieBanner: FC = () => {
     import('react-ga')
       .then((x) => x.default)
       .then((ReactGA) => {
-        const trackers = [
-          {
-            trackingId: gaTrackingId,
-            gaOptions: { name: 'ua' }
-          }
-          // },
-          // {
-          //   trackingId: 'G-WDQ3ZS1QE9',
-          //   gaOptions: { name: 'ga' }
-          // }
-        ];
-        ReactGA.initialize(trackers);
-        ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
-
-        Router.events.on('routeChangeComplete', () => {
-          ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
-        });
+        // const trackers = [
+        //   {
+        //     trackingId: gaTrackingId,
+        //     gaOptions: { name: 'ua' }
+        //   }
+        //   // },
+        //   // {
+        //   //   trackingId: 'G-WDQ3ZS1QE9',
+        //   //   gaOptions: { name: 'ga' }
+        //   // }
+        // ];
+        ReactGA.initialize(gaTrackingId);
+        // ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
+        //
+        // Router.events.on('routeChangeComplete', () => {
+        //   ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
+        // });
       });
   };
 
