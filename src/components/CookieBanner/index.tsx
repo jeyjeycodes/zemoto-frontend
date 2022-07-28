@@ -13,47 +13,47 @@ const CookieBanner: FC = () => {
   const [slide, setSlide] = useState(0);
   const [analyticsEnabled, setAnalyticsEnabled] = useState(true);
 
-  const handleAddAnalyticsCookies = () => {
-    if (process.env.NODE_ENV !== 'production') return;
-    import('react-ga')
-      .then((x) => x.default)
-      .then((ReactGA) => {
-        // const trackers = [
-        //   {
-        //     trackingId: gaTrackingId,
-        //     gaOptions: { name: 'ua' }
-        //   }
-        //   // },
-        //   // {
-        //   //   trackingId: 'G-WDQ3ZS1QE9',
-        //   //   gaOptions: { name: 'ga' }
-        //   // }
-        // ];
-        ReactGA.initialize(gaTrackingId);
-        ReactGA.pageview(window.location.pathname + window.location.search);
-        // ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
-        //
-        // Router.events.on('routeChangeComplete', () => {
-        //   ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
-        // });
-      });
-  };
+  // const handleAddAnalyticsCookies = () => {
+  //   if (process.env.NODE_ENV !== 'production') return;
+  //   import('react-ga')
+  //     .then((x) => x.default)
+  //     .then((ReactGA) => {
+  //       // const trackers = [
+  //       //   {
+  //       //     trackingId: gaTrackingId,
+  //       //     gaOptions: { name: 'ua' }
+  //       //   }
+  //       //   // },
+  //       //   // {
+  //       //   //   trackingId: 'G-WDQ3ZS1QE9',
+  //       //   //   gaOptions: { name: 'ga' }
+  //       //   // }
+  //       // ];
+  //       ReactGA.initialize(gaTrackingId);
+  //       ReactGA.pageview(window.location.pathname + window.location.search);
+  //       // ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
+  //       //
+  //       // Router.events.on('routeChangeComplete', () => {
+  //       //   ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
+  //       // });
+  //     });
+  // };
 
   const handleRemoveAnalyticsCookies = () => {
     cookies.remove('_ga');
     cookies.remove('_gid');
     cookies.remove(`_gat_gtag_${gaTrackingId}`);
     cookies.remove('_gat_ua');
+    cookies.remove('_gat');
 
     // Could be for GA4
-    // cookies.remove('_gat');
     // cookies.remove('_ga_WDQ3ZS1QE9');
     // cookies.remove('_ga_WDQ3ZS1QE9');
   };
 
   useEffect(() => {
     if (cookies.get('cookie-consent') === 'true') {
-      handleAddAnalyticsCookies();
+      // handleAddAnalyticsCookies();
     }
     if (!cookies.get('cookie-consent') || cookies.get('cookie-consent') === 'false') {
       handleRemoveAnalyticsCookies();
@@ -65,7 +65,7 @@ const CookieBanner: FC = () => {
       expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
       path: '/'
     });
-    handleAddAnalyticsCookies();
+    // handleAddAnalyticsCookies();
     setOpen(false);
   };
 

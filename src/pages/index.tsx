@@ -7,6 +7,7 @@ import Reviews from '@components/Reviews';
 import FrequentlyAskedQuestions from '@components/FrequentlyAskedQuestions';
 import BottomInfo from '@components/BottomInfo';
 import CookieBanner from '@components/CookieBanner';
+import Analytics from '@components/Analytics';
 
 const Home: NextPage = () => {
   return (
@@ -71,6 +72,7 @@ Collection Service'
         <meta name='google-site-verification' content='6VoxLDYfEQtYivbxxzORqkBNYFQ3euXTzv5l6kvf_Ko' />
       </Head>
       <Main>
+        <Analytics />
         <CookieBanner />
         <Hero />
         <HowItWorks />
