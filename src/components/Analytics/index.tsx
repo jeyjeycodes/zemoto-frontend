@@ -18,8 +18,8 @@ const Analytics: FC = () => {
           '@context': 'https://schema.org',
           '@type': 'Organization',
           name: 'zemoto',
-          url: 'https://zemoto.vercel.app/',
-          logo: 'https://zemoto.vercel.app/resources/svgs/zemoto_refactored.svg'
+          url: 'https://www.zemoto.co.uk/',
+          logo: '/resources/svgs/zemoto_refactored.svg'
         `}
       </Script>
     </>
