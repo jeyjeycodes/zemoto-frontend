@@ -30,6 +30,7 @@ const CookieBanner: FC = () => {
         //   // }
         // ];
         ReactGA.initialize(gaTrackingId);
+        ReactGA.pageview(window.location.pathname + window.location.search);
         // ReactGA.pageview(window.location.pathname + window.location.search, ['ua']); //, 'ga']);
         //
         // Router.events.on('routeChangeComplete', () => {
