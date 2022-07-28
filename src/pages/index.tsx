@@ -6,6 +6,7 @@ import HowItWorks from '@components/HowItWorks';
 import Reviews from '@components/Reviews';
 import FrequentlyAskedQuestions from '@components/FrequentlyAskedQuestions';
 import BottomInfo from '@components/BottomInfo';
+import CookieBanner from '@components/CookieBanner';
 
 const Home: NextPage = () => {
   return (
@@ -32,10 +33,10 @@ Collection Service'
 
         <meta property='og:title' content='Zemoto - Sell your Motorcyle Online, London ' />
         <meta property='og:site_name' content='zemoto.co.uk' />
-        <meta property='og:url' content='https://zemoto.vercel.app/resources/svgs/zemoto_refactored.svg' />
+        <meta property='og:url' content='https://www.zemoto.co.uk' />
         <meta property='og:description' content='' />
         <meta property='og:type' content='website' />
-        <meta property='og:image' content='https://zemoto.vercel.app/resources/svgs/zemoto_refactored.svg' />
+        <meta property='og:image' content='/resources/svgs/zemoto_refactored.svg' />
         <meta property='og:image' content='' />
 
         <link rel='icon' href='/favicon.ico' />
@@ -47,28 +48,30 @@ Collection Service'
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'zemoto',
-              url: 'https://zemoto.vercel.app/',
-              logo: 'https://zemoto.vercel.app/resources/svgs/zemoto_refactored.svg'
+              name: 'Zemoto',
+              url: 'https://www.zemoto.co.uk/',
+              logo: '/resources/svgs/zemoto_refactored.svg'
             })
           }}
         />
 
-        {/*{!--Global site tag (gtag.js) - Google Analytics --}*/}
-        <script async src='https://www.googletagmanager.com/gtag/js?id=UA-233540932-12' />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: ` 
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-233540932-12');`
-          }}
-        ></script>
+        {/*{!--Global site tag (gtag.js) - Google CookieBanner --}*/}
+        {/*<script async src='https://www.googletagmanager.com/gtag/js?id=UA-233540932-12' />*/}
+        {/*<script*/}
+        {/*  dangerouslySetInnerHTML={{*/}
+        {/*    __html: ` */}
+        {/*    window.dataLayer = window.dataLayer || [];*/}
+        {/*    function gtag(){dataLayer.push(arguments);}*/}
+        {/*    gtag('js', new Date());*/}
+        {/*    gtag('config', 'UA-233540932-12');`*/}
+        {/*  }}*/}
+        {/*></script>*/}
 
+        {/*Google search*/}
         <meta name='google-site-verification' content='6VoxLDYfEQtYivbxxzORqkBNYFQ3euXTzv5l6kvf_Ko' />
       </Head>
       <Main>
+        <CookieBanner />
         <Hero />
         <HowItWorks />
         <Reviews />
