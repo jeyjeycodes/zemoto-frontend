@@ -15,6 +15,7 @@ const CookieBanner: FC = () => {
   const [analyticsEnabled, setAnalyticsEnabled] = useState(true);
 
   const handleAddAnalyticsCookies = () => {
+    console.log('GA', gaTrackingId);
     if (process.env.NODE_ENV !== 'production') return;
     import('react-ga')
       .then((x) => x.default)
@@ -43,10 +44,10 @@ const CookieBanner: FC = () => {
     cookies.remove('_ga');
     cookies.remove('_gid');
     cookies.remove(`_gat_gtag_${gaTrackingId}`);
+    cookies.remove('_gat_ua');
 
     // Could be for GA4
     // cookies.remove('_gat');
-    // cookies.remove('_gat_ua');
     // cookies.remove('_ga_WDQ3ZS1QE9');
     // cookies.remove('_ga_WDQ3ZS1QE9');
   };
